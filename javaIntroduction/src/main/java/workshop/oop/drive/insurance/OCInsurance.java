@@ -7,8 +7,6 @@ public class OCInsurance {
     private final int initialPrice;
     private LinkedList<Discounts> discounts = new LinkedList<>();
     private int actualPrice;
-
-    private DiscountHistory discountHistory = new DiscountHistory();
     public OCInsurance(int initialPrice) {
         this.initialPrice = initialPrice;
     }
