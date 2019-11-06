@@ -16,6 +16,8 @@ public class OCInsurance {
         this.sex = sex;
     }
 
+
+
     public int calculateFinalPrice() {
         actualPrice = initialPrice;
         for(Discounts discount: discounts){
