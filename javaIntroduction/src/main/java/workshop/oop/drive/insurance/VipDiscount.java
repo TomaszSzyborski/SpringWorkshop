@@ -8,7 +8,7 @@ public class VipDiscount implements Discounts {
     }
 
     @Override
-    public int calculateDiscount(int actualPrice) {
+    public int calculateDiscount(int actualPrice, Sex sex) {
         return actualPrice * this.relativeDiscountPercentage / 100;
     }
 }

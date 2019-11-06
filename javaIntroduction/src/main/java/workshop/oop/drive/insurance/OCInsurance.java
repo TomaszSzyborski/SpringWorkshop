@@ -8,6 +8,7 @@ public class OCInsurance {
     private LinkedList<Discounts> discounts = new LinkedList<>();
     private int actualPrice;
 
+    private DiscountHistory discountHistory = new DiscountHistory();
     public OCInsurance(int initialPrice) {
         this.initialPrice = initialPrice;
     }
@@ -20,7 +21,7 @@ public class OCInsurance {
     public int calculateFinalPrice() {
         actualPrice = initialPrice;
         for(Discounts discount: discounts){
-            actualPrice -= discount.calculateDiscount(actualPrice);
+            actualPrice -= discount.calculateDiscount(actualPrice, sex);
         }
         return  actualPrice;
     }

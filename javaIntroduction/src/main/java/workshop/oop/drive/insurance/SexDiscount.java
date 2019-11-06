@@ -8,7 +8,7 @@ public class SexDiscount implements Discounts {
     }
 
     @Override
-    public int calculateDiscount(int actualPrice) {
+    public int calculateDiscount(int actualPrice, Sex sex) {
         return actualPrice * sexDiscountAmount/100;
     }
 }
