@@ -1,56 +1,54 @@
 package workshop.oop.drive.insurance;
 
+import java.util.LinkedList;
+
 public class OCInsurance {
     private Sex sex;
     private final int initialPrice;
-    private int yearlyPrice = 0;
-    private int absoluteDiscount = 0;
-    private int relativeDiscount = 0;
-    private int vipDiscount = 0;
-    private int sexDiscount= 0;
+    private LinkedList<Discounts> discounts = new LinkedList<>();
+    private int actualPrice;
 
     public OCInsurance(int initialPrice) {
         this.initialPrice = initialPrice;
-        this.yearlyPrice = initialPrice;
     }
 
     public OCInsurance(Sex sex, int initialPrice) {
         this.initialPrice = initialPrice;
         this.sex = sex;
-        this.yearlyPrice = initialPrice;
     }
 
     public int calculateFinalPrice() {
-        int priceAfterAbsoluteDiscount = yearlyPrice - absoluteDiscount;
-        int priceAfterRelativeDiscount = priceAfterAbsoluteDiscount * relativeDiscount / 100;
-        int beforeSexDiscount = priceAfterAbsoluteDiscount - priceAfterRelativeDiscount - vipDiscount;
-        return beforeSexDiscount - sexDiscount * beforeSexDiscount / 100;
+        actualPrice = initialPrice;
+        for(Discounts discount: discounts){
+            actualPrice -= discount.calculateDiscount(actualPrice);
+        }
+        return  actualPrice;
     }
 
     public void addAbsoluteDiscount(int i) {
         if (initialPrice - i > 0) {
-            this.absoluteDiscount += i;
+            discounts.add(new AbsoluteDiscount(i));
         }
 
     }
 
     public void addRelativeDiscount(int i) {
-        this.relativeDiscount = i;
+        discounts.add(new RelativeDiscount(i));
     }
 
     public void removeAbsoluteDiscounts() {
-        this.absoluteDiscount = 0;
+        discounts.removeIf(Discounts::isAbsoluteDiscount);
     }
 
     public void addVIPDiscount(int i) {
         if (initialPrice > 5000) {
-            vipDiscount = (initialPrice - absoluteDiscount) * i / 100;
+            discounts.add(new VipDiscount(i));
         }
     }
 
     public void addSexDiscount(Sex sex, int amount) {
         if (this.sex.equals(sex)){
-            sexDiscount = amount;
+            discounts.add(new SexDiscount(amount));
         }
     }
 }

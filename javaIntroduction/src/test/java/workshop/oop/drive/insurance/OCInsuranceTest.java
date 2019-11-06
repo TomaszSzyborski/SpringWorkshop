@@ -52,7 +52,7 @@ public class OCInsuranceTest {
     //when
     ocInsurance.addAbsoluteDiscount(20);
     ocInsurance.addRelativeDiscount(10);
-    ocInsurance.addAbsoluteDiscount(20);
+    ocInsurance.addAbsoluteDiscount(30);
 
     //then
     assertThat(ocInsurance.calculateFinalPrice()).isEqualTo(222);
@@ -67,11 +67,11 @@ public class OCInsuranceTest {
     //when
     ocInsurance.addAbsoluteDiscount(20);
     ocInsurance.addRelativeDiscount(10);
-    ocInsurance.addAbsoluteDiscount(20);
-    ocInsurance.addRelativeDiscount(10);
+    ocInsurance.addAbsoluteDiscount(30);
+    ocInsurance.addRelativeDiscount(50);
     //then
-    assertThat(ocInsurance.calculateFinalPrice()).isEqualTo(222);
-    assertThat(ocInsurance.calculateFinalPrice()).isEqualTo(222);
+    assertThat(ocInsurance.calculateFinalPrice()).isEqualTo(111);
+    assertThat(ocInsurance.calculateFinalPrice()).isEqualTo(111);
   }
 
   @Order(50)
