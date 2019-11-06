@@ -8,6 +8,7 @@ public class DiscountHistory {
 
   public void addAbsoluteDiscount(int i) {
 
+
     discounts.add(new AbsoluteDiscount(i));
   }
 
