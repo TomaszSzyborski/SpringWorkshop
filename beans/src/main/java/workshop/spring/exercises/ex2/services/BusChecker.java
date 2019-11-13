@@ -9,15 +9,10 @@ import workshop.spring.exercises.ex2.domain.SafetyReport;
 public class BusChecker {
 
     @Autowired
-    BusChecker busChecker;
+    private BusValidator busValidator;
 
-     private SafetyReport safetyReport;
+    public SafetyReport check(Bus bus) {
 
-  public SafetyReport check(Bus bus) {
-this.safetyReport = new SafetyReport(bus);
-//TODO FIX
-//    BusValidator busValidator = new BusValidator();
-//    safetyReport = busValidator.prepareReport(bus);
-    return this.safetyReport;
-  }
+        return busValidator.prepareReport(bus);
+    }
 }

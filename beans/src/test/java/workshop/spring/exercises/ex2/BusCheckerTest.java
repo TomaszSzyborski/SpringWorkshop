@@ -35,7 +35,7 @@ public class BusCheckerTest {
     Bus minibus = createBrandNewBus();
 
     SafetyReport safetyReport = busChecker.check(minibus);
-    assertThat(safetyReport.getThingsToFix()).isEmpty();
+    assertThat(safetyReport.thingsToFix).isEmpty();
 
   }
 
@@ -72,7 +72,7 @@ public class BusCheckerTest {
     minibus.seats.get(3).seatBelt.doItWork = false;
 
     SafetyReport safetyReport = busChecker.check(minibus);
-    assertThat(safetyReport.getThingsToFix()).containsExactlyInAnyOrder(
+    assertThat(safetyReport.thingsToFix).containsExactlyInAnyOrder(
         minibus,
         minibus.engine,
         minibus.tires.get(2),

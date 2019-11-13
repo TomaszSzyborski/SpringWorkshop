@@ -29,19 +29,22 @@ public class BusValidator {
     }
 
     public SafetyReport prepareReport(Bus bus) {
-        validateBus(bus);
-        if (!this.safetyReport.thingsToFix.isEmpty()) {
-            this.safetyReport.thingsToFix.add(bus);
+        safetyReport = new SafetyReport();
+        prepareSaftyReport(bus,safetyReport);
+        if (!safetyReport.thingsToFix.isEmpty()) {
+            safetyReport.thingsToFix.add(bus);
         }
-        return this.safetyReport;
+        return safetyReport;
     }
 
-    private void validateBus(Bus bus) {
-        busAgeValidator.validate(this.safetyReport, bus);
-        engineValidator.validate(this.safetyReport, bus);
-        tireValidator.validate(this.safetyReport, bus);
-        seatsValidator.validate(this.safetyReport, bus);
-        seatBeltValidator.validate(this.safetyReport, bus);
+    private void validateBus(Bus bus, SafetyReport safetyReport) {
+        busAgeValidator.validate(safetyReport, bus);
+        engineValidator.validate(safetyReport, bus);
+        tireValidator.validate(safetyReport, bus);
+        seatsValidator.validate(safetyReport, bus);
+        seatBeltValidator.validate(safetyReport, bus);
     }
-
+    private void prepareSaftyReport(final Bus bus, final SafetyReport safetyReport) {
+        validateBus(bus, safetyReport);
+    }
 }
