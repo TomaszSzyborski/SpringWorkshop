@@ -1,9 +1,9 @@
 package workshop.spring.exercises.ex5;
 
 public class Cow {
-  private Sex sex;
-  private int weight;
-  private String stamp;
+  public final Sex sex;
+  public int weight;
+  public String stamp;
 
   public Cow(Sex sex, int weight) {
 
@@ -11,8 +11,12 @@ public class Cow {
     this.weight = weight;
   }
 
-  public String getStamp() {
+//  public String getStamp() {
+//
+//    return stamp;
+//  }
 
-    return stamp;
+  public void setStamp(String stamp) {
+    this.stamp = stamp;
   }
 }

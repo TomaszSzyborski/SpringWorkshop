@@ -1,7 +1,6 @@
 package workshop.spring.exercises.ex2.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 import workshop.spring.exercises.ex2.domain.Bus;
 import workshop.spring.exercises.ex2.domain.SafetyReport;
@@ -9,13 +8,16 @@ import workshop.spring.exercises.ex2.domain.SafetyReport;
 @Component
 public class BusChecker {
 
+    @Autowired
+    BusChecker busChecker;
 
-  private SafetyReport safetyReport;
+     private SafetyReport safetyReport;
 
   public SafetyReport check(Bus bus) {
 this.safetyReport = new SafetyReport(bus);
-    BusValidator busValidator = new BusValidator(safetyReport);
-    safetyReport = busValidator.prepareReport(bus);
+//TODO FIX
+//    BusValidator busValidator = new BusValidator();
+//    safetyReport = busValidator.prepareReport(bus);
     return this.safetyReport;
   }
 }

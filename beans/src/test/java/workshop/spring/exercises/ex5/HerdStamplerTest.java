@@ -21,6 +21,7 @@ public class HerdStamplerTest {
 
 
   @Autowired(required = false)
+//  @Autowired
   private HerdStampler herdStampler;
 
   @Test
@@ -33,9 +34,9 @@ public class HerdStamplerTest {
 
     herdStampler.stamp(bigBull, mediumMilkCow, smallBull, smallCow);
 
-    assertThat(bigBull.getStamp()).isEqualTo("meat");
-    assertThat(mediumMilkCow.getStamp()).isEqualTo("milk");
-    assertThat(smallBull.getStamp()).isEqualTo("breeding");
-    assertThat(smallCow.getStamp()).isEqualTo("breeding");
+    assertThat(bigBull.stamp).isEqualToIgnoringCase("meat");
+    assertThat(mediumMilkCow.stamp).isEqualToIgnoringCase("milk");
+    assertThat(smallBull.stamp).isEqualToIgnoringCase("breeding");
+    assertThat(smallCow.stamp).isEqualToIgnoringCase("breeding");
   }
 }
