@@ -3,5 +3,10 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 		http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
 
+	<bean id="otherBean" class="workshop.spring.exercises.ex1.NameGenerator" name="Name Generator">
+	</bean>
+
+	<bean id="emailGenerator" class="workshop.spring.showcase.EmailGenerator"/>
+
 
 </beans>

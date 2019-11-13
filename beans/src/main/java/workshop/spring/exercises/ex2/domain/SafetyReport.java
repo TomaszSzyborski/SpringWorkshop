@@ -4,10 +4,15 @@ import com.google.common.collect.Sets;
 import java.util.Set;
 
 public class SafetyReport {
-  private Set<Object> thingsToFix = Sets.newHashSet();
+  private final Bus bus;
+  public Set<Object> thingsToFix = Sets.newHashSet();
+
+  public SafetyReport(Bus bus) {
+    this.bus = bus;
+  }
 
   public Set<Object> getThingsToFix() {
-
     return thingsToFix;
   }
+
 }
