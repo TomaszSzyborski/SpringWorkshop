@@ -6,9 +6,14 @@ import org.springframework.stereotype.Component;
 @Component
 @Order
 public class BreedingStampler implements CowStampler {
+
     @Override
-    public boolean stamp(Cow cow) {
-        cow.setStamp("breeding");
+    public String getStamp() {
+        return "Breeding";
+    }
+
+    @Override
+    public boolean applies(Cow cow) {
         return true;
     }
 }

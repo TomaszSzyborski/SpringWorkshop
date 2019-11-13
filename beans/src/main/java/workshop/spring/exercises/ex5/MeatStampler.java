@@ -7,12 +7,14 @@ import org.springframework.stereotype.Component;
 @Order(1)
 public class MeatStampler implements CowStampler {
     @Override
-    public boolean stamp(Cow cow) {
-        if (cow.sex == Sex.MALE && cow.weight > 400) {
-            cow.setStamp("meat");
-            return true;
-        }
-        return false;
+    public String getStamp() {
+        return "Meat";
     }
+
+    @Override
+    public boolean applies(Cow cow) {
+        return cow.sex == Sex.MALE && cow.weight > 400;
+    }
+
 }
 
